@@ -1,5 +1,5 @@
 import { HttpClientModule } from '@angular/common/http';
-import {ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
+import {ComponentFixture, fakeAsync, TestBed, tick, waitForAsync} from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -16,6 +16,7 @@ import {of, throwError} from "rxjs";
 import {Router} from "@angular/router";
 import {SessionInformation} from "../../../../interfaces/sessionInformation.interface";
 import {By} from "@angular/platform-browser";
+import {ListComponent} from "../../../sessions/components/list/list.component";
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -29,9 +30,8 @@ describe('LoginComponent', () => {
       providers: [SessionService, AuthService],
       imports: [
         RouterTestingModule.withRoutes([
-          { path: 'sessions', redirectTo: '' }
+          { path: 'sessions', component: ListComponent }
         ]),
-        RouterTestingModule,
         BrowserAnimationsModule,
         HttpClientModule,
         MatCardModule,
@@ -137,7 +137,7 @@ describe('LoginComponent', () => {
     expect(passwordControl?.hasError('required')).toBe(false);
 
     passwordControl?.setValue('te');
-    expect(passwordControl?.hasError('min')).toBeFalsy();
+    expect(passwordControl?.hasError('minlength')).toBeTruthy();
   });
 
   it('should not display submit button when email is not valid', () => {

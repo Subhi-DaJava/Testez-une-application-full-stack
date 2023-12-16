@@ -49,7 +49,7 @@ export class DetailComponent implements OnInit {
       .delete(this.sessionId)
       .subscribe((_: any) => {
           this.matSnackBar.open('Session deleted !', 'Close', { duration: 3000 });
-          this.router.navigate(['sessions']);
+          this.router.navigate(['sessions']).then();
         }
       );
   }

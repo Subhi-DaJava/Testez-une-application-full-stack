@@ -36,7 +36,7 @@ export class MeComponent implements OnInit {
       .subscribe((_) => {
         this.matSnackBar.open("Your account has been deleted !", 'Close', { duration: 3000 });
         this.sessionService.logOut();
-        this.router.navigate(['/']);
+        this.router.navigate(['/']).then();
       })
   }
 

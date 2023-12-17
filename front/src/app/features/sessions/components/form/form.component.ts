@@ -32,7 +32,7 @@ export class FormComponent implements OnInit {
 
   public ngOnInit(): void {
     if (!this.sessionService.sessionInformation!.admin) {
-      this.router.navigate(['/sessions']);
+      this.router.navigate(['/sessions']).then();
     }
     const url = this.router.url;
     if (url.includes('update')) {
@@ -86,6 +86,6 @@ export class FormComponent implements OnInit {
 
   private exitPage(message: string): void {
     this.matSnackBar.open(message, 'Close', { duration: 3000 });
-    this.router.navigate(['sessions']);
+    this.router.navigate(['sessions']).then();
   }
 }

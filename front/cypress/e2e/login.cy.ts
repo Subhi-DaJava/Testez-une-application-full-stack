@@ -1,5 +1,5 @@
 describe('Login spec', () => {
-  it('Login successfull', () => {
+  it('Login successful', () => {
     cy.visit('/login')
 
     cy.intercept('POST', '/api/auth/login', {
@@ -23,5 +23,7 @@ describe('Login spec', () => {
     cy.get('input[formControlName=password]').type(`${"test!1234"}{enter}{enter}`)
 
     cy.url().should('include', '/sessions')
+    cy.get('span').should('exist', 'Logout');
+    cy.get('[data-testid="logout-test"]').should('exist', 'Logout');
   })
 });

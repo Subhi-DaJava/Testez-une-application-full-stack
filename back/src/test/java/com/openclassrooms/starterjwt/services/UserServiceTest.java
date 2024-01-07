@@ -59,8 +59,10 @@ class UserServiceTest {
         user.setUpdatedAt(LocalDateTime.now());
         Long id = 1L;
         when(userRepository.findById(id)).thenReturn(Optional.ofNullable(user));
+
         // When
         User userByIde = userService.findById(id);
+
         // Then
         verify(userRepository, times(1)).findById(id);
         assertThat(userByIde).isEqualTo(user);
@@ -77,6 +79,7 @@ class UserServiceTest {
       //when(userRepository.findById(id)).thenReturn(Optional.empty());
         // When
         User userByIde = userService.findById(id);
+
         // Then
         verify(userRepository, times(1)).findById(id);
         assertThat(userByIde).isNull();

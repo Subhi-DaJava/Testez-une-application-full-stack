@@ -1,13 +1,19 @@
 package com.openclassrooms.starterjwt;
 
+import com.openclassrooms.starterjwt.controllers.UserController;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @SpringBootTest
-public class SpringBootSecurityJwtApplicationTests {
+class SpringBootSecurityJwtApplicationTests {
+	@MockBean
+	private UserController userController;
 
 	@Test
-	public void contextLoads() {
+	void contextLoads() {
+		assertThat(userController).isNotNull();
 	}
-
 }

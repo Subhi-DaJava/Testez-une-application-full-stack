@@ -32,7 +32,6 @@ public abstract class SessionMapper implements EntityMapper<SessionDto, Session>
     })
     public abstract Session toEntity(SessionDto sessionDto);
 
-
     @Mappings({
             @Mapping(source = "description", target = "description"),
             @Mapping(source = "session.teacher.id", target = "teacher_id"),

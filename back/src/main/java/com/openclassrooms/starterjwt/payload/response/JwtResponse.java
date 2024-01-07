@@ -3,6 +3,8 @@ package com.openclassrooms.starterjwt.payload.response;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Objects;
+
 @Getter
 @Setter
 public class JwtResponse {
@@ -23,4 +25,5 @@ public class JwtResponse {
     this.username = username;
     this.admin = admin;
   }
+
 }

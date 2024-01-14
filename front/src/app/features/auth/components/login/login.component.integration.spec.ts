@@ -53,7 +53,7 @@ describe('LoginComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should call sessionService.logIn given email and password', () => {
+  it('should call sessionService.logIn given valid email and password',() => {
     const loginRequest : LoginRequest = {
       email: 'test@test.com',
       password: '123456'
@@ -149,7 +149,6 @@ describe('LoginComponent', () => {
     component.form.controls['password'].setValue(loginRequest.password);
     fixture.detectChanges();
     const submitButton = fixture.debugElement.query(By.css('[data-testid="button-hide"]'));
-
 
     expect(submitButton.styles['display']).toBeFalsy();
     expect(component.hide).toBeTruthy();

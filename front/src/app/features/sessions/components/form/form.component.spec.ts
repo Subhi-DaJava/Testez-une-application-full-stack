@@ -11,7 +11,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import { expect } from '@jest/globals';
 import { SessionService } from 'src/app/services/session.service';
-import { SessionApiService } from '../../services/session-api.service';
 import { FormComponent } from './form.component';
 import {By} from "@angular/platform-browser";
 

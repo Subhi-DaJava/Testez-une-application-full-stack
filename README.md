@@ -83,10 +83,11 @@ Le rapport est disponible ici :
 
 ### Rapport de tests
 1. Rapport de test généré par Jest :
-![img.png](img.png)
+![Rapport de test généré par Jest](https://github.com/Subhi-DaJava/Testez-une-application-full-stack/assets/90509456/4d8ef76f-7bab-4a7a-a9eb-afb60a57197a)
+
 
 2. Rapport de test généré par JaCoCo :
-![img_1.png](img_1.png)
+![Rapport de test généré par JaCoCo](https://github.com/Subhi-DaJava/Testez-une-application-full-stack/assets/90509456/574b5ec3-8113-4ff7-b03d-6fde08693de9)
 
 3. Rapport de test généré par E2E :
-![img_2.png](img_2.png)
+![Rapport de test généré par E2E](https://github.com/Subhi-DaJava/Testez-une-application-full-stack/assets/90509456/4eaa1140-4aab-49f8-9576-3c4e9a7096f7)

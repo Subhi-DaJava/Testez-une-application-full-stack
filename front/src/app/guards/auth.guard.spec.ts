@@ -2,7 +2,6 @@ import { TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { SessionService } from '../services/session.service';
 import { AuthGuard } from './auth.guard';
-import {RouterTestingModule} from "@angular/router/testing";
 
 describe('AuthGuard test suites', () => {
   let guard: AuthGuard;

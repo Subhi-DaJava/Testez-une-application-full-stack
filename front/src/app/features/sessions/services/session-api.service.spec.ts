@@ -2,7 +2,7 @@ import { expect } from '@jest/globals';
 import { SessionApiService } from './session-api.service';
 import {of} from "rxjs";
 
-describe('SessionsService', () => {
+describe('SessionsApiService', () => {
   let service: SessionApiService;
   let httpClientSpy: any;
   const url = 'api/session';
@@ -21,7 +21,7 @@ describe('SessionsService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should call all', () => {
+  it('should call all method', () => {
     const response = [
       {
         id: '1',
@@ -51,7 +51,7 @@ describe('SessionsService', () => {
     expect(httpSpy).toHaveBeenCalledWith(url);
   });
 
-  it('should call detail', () => {
+  it('should call detail method', () => {
     const response = {
       id: '1',
       name: 'fakeName',
@@ -79,7 +79,7 @@ describe('SessionsService', () => {
     expect(httpSpy).toHaveBeenCalledWith(`${url}/1`);
   });
 
-  it('should call delete a session by it', () => {
+  it('should call delete a session by its id', () => {
     const httpSpy = jest.spyOn(httpClientSpy, 'delete').mockReturnValue(of({}));
     service.delete('1').subscribe((data: any) => {
       expect(data).toEqual({});
@@ -89,7 +89,7 @@ describe('SessionsService', () => {
     expect(httpSpy).toHaveBeenCalledWith(`${url}/1`);
   });
 
-  it('should call create a session', () => {
+  it('should call create method', () => {
     const response: any = {
       id: '1',
       name: 'fakeSessionName',
@@ -116,7 +116,7 @@ describe('SessionsService', () => {
     expect(httpSpy).toHaveBeenCalledTimes(1);
   });
 
-  it('should call update a session', () => {
+  it('should call update method', () => {
     const response: any = {
       id: '1',
       name: 'fakeSessionName_updated',
@@ -144,7 +144,7 @@ describe('SessionsService', () => {
     expect(httpSpy).toHaveBeenCalledTimes(1);
   });
 
-  it('should call participate a session', () => {
+  it('should call participate method', () => {
     const response: any = {};
     const userId = '1';
 
@@ -159,7 +159,7 @@ describe('SessionsService', () => {
     expect(service.participate('1', userId)).toBeTruthy();
   });
 
-  it('should call unParticipate a session', () => {
+  it('should call unParticipate method', () => {
     const response: any = {};
     const userId = '1';
 
@@ -173,6 +173,5 @@ describe('SessionsService', () => {
     expect(httpSpy).toHaveBeenCalledTimes(1);
     expect(service.unParticipate('1', userId)).toBeTruthy();
   });
-
 
 });

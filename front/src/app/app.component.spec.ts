@@ -124,11 +124,6 @@ describe('AppComponent', () => {
     expect(mockSessionService.sessionInformation).toBeUndefined();
     expect(mockSessionService.isLogged).toBeFalsy();
 
-    // setTimeout(() => {
-    //   expect(mockRouter.navigate).toHaveBeenCalled();
-    //   expect(routerSpy).toHaveBeenCalledWith(['']);
-    // }, 3000);
-
   }));
 
 

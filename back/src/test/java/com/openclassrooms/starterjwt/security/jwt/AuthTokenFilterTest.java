@@ -53,10 +53,9 @@ class AuthTokenFilterTest {
         doNothing().when(filterChain).doFilter(request, response);
 
         // When
-
         authTokenFilter.doFilterInternal(request, response, filterChain);
-        // Then
 
+        // Then
         assertThat(authTokenFilter).isNotNull();
         verify(request, times(1)).getHeader("Authorization");
         verify(jwtUtils, times(1)).validateJwtToken(jwt);

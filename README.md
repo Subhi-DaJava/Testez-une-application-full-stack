@@ -44,6 +44,10 @@
 ### Frontend
 1. Allez dans le dossier du frontend : `cd front`. (Si vous êtes déjà dans le dossier du backend, vous pouvez utiliser la commande `cd ../front`).
 2. Lancez l'application avec npm : `ng serve`.
+3. Ouvrez votre navigateur et allez à l'adresse `http://localhost:4200/`.
+4. Pour vous connecter à l'application, utilisez l'identifiant suivant (par défaut, le compte administrateur) :
+   - identifiant : yoga@studio.com
+   - mot de passe : test!1234
 
 
 ### Testing 
@@ -55,7 +59,7 @@
 
 #### Cypress (Frontend E2E)
 1. Allez dans le dossier du frontend : `cd front/cypress/e2e/`.
-2. Lancez l'application avec npm : `ng serve`.
+2. Lancez l'application avec angular CLI : `ng serve` ou avec npm : `npm run start`.
 3. Lancez la commande : `npm run cypress:open`.
 4. Cliquez sur le navigateur (Interface Cypress) `E2E Testing`.
 5. Choisissez un navigateur (Chrome e.g.), et puis cliquez `Start E2E Testing in Chrome`.
@@ -81,7 +85,7 @@ Le rapport est disponible ici :
 1. Rapport de test généré par Jest :
 ![img.png](img.png)
 
-2. Rapport de test généré par JUnit :
+2. Rapport de test généré par JaCoCo :
 ![img_1.png](img_1.png)
 
 3. Rapport de test généré par E2E :

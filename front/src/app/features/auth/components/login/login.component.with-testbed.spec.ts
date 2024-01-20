@@ -53,7 +53,7 @@ describe('LoginComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should call sessionService.logIn given valid email and password',() => {
+  it('should call sessionService.logIn with valid email and password',() => {
     const loginRequest : LoginRequest = {
       email: 'test@test.com',
       password: '123456'
@@ -85,7 +85,8 @@ describe('LoginComponent', () => {
 
     expect(routerSpy).toHaveBeenCalled();
     expect(authService.login).toHaveBeenCalled();
-    expect(sessionService.logIn).toHaveBeenCalled();expect(routerSpy).toHaveBeenCalledWith(['/sessions']);
+    expect(sessionService.logIn).toHaveBeenCalled();
+    expect(routerSpy).toHaveBeenCalledWith(['/sessions']);
 
   });
 
@@ -122,6 +123,7 @@ describe('LoginComponent', () => {
 
     emailControl?.setValue('test');
     expect(emailControl?.hasError('required')).toBe(false);
+    expect(emailControl?.hasError('email')).toBe(true);
 
     emailControl?.setValue('invalidemail');
     expect(emailControl?.hasError('email')).toBe(true);

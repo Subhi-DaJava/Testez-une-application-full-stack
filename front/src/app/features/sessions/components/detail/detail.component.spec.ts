@@ -65,8 +65,8 @@ describe('DetailComponent', () => {
 
   it('should display correctly a session information', () => {
     const session: Session = {
-      name: 'Mathematics 101',
-      description: 'Introduction to Mathematics',
+      name: 'Yoga For The Beginners',
+      description: 'If you are new to yoga, this class is perfect for you. We will go through the basics of yoga and you will learn the most common poses.',
       date: new Date(),
       teacher_id: 1,
       users: [1, 3, 4],
@@ -86,8 +86,8 @@ describe('DetailComponent', () => {
 
   it('should render the delete button if the user is admin', () => {
     const session: Session = {
-      name: 'Mathematics 101',
-      description: 'Introduction to Mathematics',
+      name: 'Yoga For The Beginners',
+      description: 'If you are new to yoga, this class is perfect for you. We will go through the basics of yoga and you will learn the most common poses.',
       date: new Date(),
       teacher_id: 1,
       users: [1, 3, 4],
@@ -105,8 +105,8 @@ describe('DetailComponent', () => {
   it('should delete the session when the delete method is called', () => {
     component.session = {
       id: 1,
-      name: 'Mathematics 101',
-      description: 'Introduction to Mathematics',
+      name: 'Yoga For The Beginners',
+      description: 'If you are new to yoga, this class is perfect for you. We will go through the basics of yoga and you will learn the most common poses.',
       date: new Date(),
       teacher_id: 1,
       users: [1, 3, 4],
@@ -128,8 +128,8 @@ describe('DetailComponent', () => {
   it('should admin delete a session when the delete button in the template is clicked', () => {
     const session: Session = {
       id: 1,
-      name: 'Mathematics 101',
-      description: 'Introduction to Mathematics',
+      name: 'Yoga For The Beginners',
+      description: 'If you are new to yoga, this class is perfect for you. We will go through the basics of yoga and you will learn the most common poses.',
       date: new Date(),
       teacher_id: 1,
       users: [1, 3, 4],
@@ -149,11 +149,11 @@ describe('DetailComponent', () => {
   });
 
 
-  it('should a user participate to a session', () => {
+  it('should an user participate to a session', () => {
     component.session = {
       id: 1,
-      name: 'Mathematics 101',
-      description: 'Introduction to Mathematics',
+      name: 'Yoga For The Beginners',
+      description: 'If you are new to yoga, this class is perfect for you. We will go through the basics of yoga and you will learn the most common poses.',
       date: new Date(),
       teacher_id: 1,
       users: [1, 3, 4],
@@ -174,11 +174,11 @@ describe('DetailComponent', () => {
     expect(spySessionApiService).toHaveBeenCalled();
   });
 
-  it('should a user unParticipate from a session', () => {
+  it('should an user unParticipate from a session', () => {
     component.session = {
       id: 1,
-      name: 'Mathematics 101',
-      description: 'Introduction to Mathematics',
+      name: 'Yoga For The Beginners',
+      description: 'If you are new to yoga, this class is perfect for you. We will go through the basics of yoga and you will learn the most common poses.',
       date: new Date(),
       teacher_id: 1,
       users: [1, 3, 4],
@@ -227,8 +227,8 @@ describe('DetailComponent', () => {
   it('should a user participate to a session when the participate button is clicked', () => {
     component.session = {
       id: 1,
-      name: 'Mathematics 101',
-      description: 'Introduction to Mathematics',
+      name: 'Yoga For the Beginners',
+      description: 'If you are new to yoga, this class is perfect for you. We will go through the basics of yoga and you will learn the most common poses.',
       date: new Date(),
       teacher_id: 1,
       users: [1, 3, 4],
@@ -259,8 +259,8 @@ describe('DetailComponent', () => {
     // Define a mock session object
     const session: Session = {
       id: 1,
-      name: 'Mathematics 101',
-      description: 'Introduction to Mathematics',
+      name: 'Yoga For The Beginners',
+      description: 'If you are new to yoga, this class is perfect for you. We will go through the basics of yoga and you will learn the most common poses.',
       date: new Date(),
       teacher_id: 1,
       users: [1, 3, 4],
@@ -272,8 +272,6 @@ describe('DetailComponent', () => {
     component.session = session;
     component.sessionId = '1';
     component.userId = '3';
-
-    //console.log('before: ', component.session.users)
 
     // Spy on the unParticipate method of the SessionApiService and provide a mock implementation
     const spySessionApiService = jest.spyOn(mockSessionApiService, 'unParticipate').mockImplementation(() => {
@@ -292,8 +290,6 @@ describe('DetailComponent', () => {
     fixture.detectChanges();
     // Trigger ngOnInit which indirectly calls fetchSession and updates the session object
     component.ngOnInit();
-
-    //console.log('after: ',component.session.users)
 
     // Query the unParticipate button
     const unParticipateButton = fixture.debugElement.query(By.css('[data-testid="user-unParticipate"]'));

@@ -101,10 +101,6 @@ describe('ListComponent', () => {
 
   it('should display the Create Session button, Detail button and Edit Button if the user is an admin', () => {
 
-    // mockSessionService.sessionInformation = {
-    //   admin: false
-    // };
-
     const session1: Session = {
       name: 'Mathematics 101',
       description: 'Introduction to Mathematics',
@@ -130,6 +126,42 @@ describe('ListComponent', () => {
 
     expect(createButton).toBeTruthy();
     expect(editButton).toBeTruthy();
+    expect(component.user!.admin).toEqual(true);
+  });
+
+  it('should not display the Create Session button, Detail button and Edit Button if the user is not an admin', () => {
+      mockSessionService.sessionInformation.admin = false;
+      const session1: Session = {
+        name: 'Mathematics 101',
+        description: 'Introduction to Mathematics',
+        date: new Date(),
+        teacher_id: 1,
+        users: [2, 3, 4],
+      };
+      const session2: Session = {
+        name: 'Physics 101',
+        description: 'Introduction to Physics',
+        date: new Date(),
+        teacher_id: 2,
+        users: [5, 6, 7],
+      };
+      const sessions = [ session1, session2 ];
+
+      component.sessions$ = of(sessions);
+
+      fixture.detectChanges();
+
+      const createButton = fixture.debugElement.query(By.css('[data-testid="create-session-button"]'));
+      const editButton = fixture.debugElement.query(By.css('[data-testid="edit-button"]'));
+
+      expect(createButton).toBeFalsy();
+      expect(editButton).toBeFalsy();
+      expect(component.user!.admin).toEqual(false);
+  });
+
+  it('should return session information when user is called', () => {
+
+    expect(component.user).toEqual(mockSessionService.sessionInformation);
   });
 
 });

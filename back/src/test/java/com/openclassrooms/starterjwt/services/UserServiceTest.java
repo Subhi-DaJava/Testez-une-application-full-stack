@@ -21,7 +21,6 @@ class UserServiceTest {
     private UserRepository userRepository;
     @InjectMocks
     private UserService userService;
-    private User user;
 
     @Test
     void should_delete_user() {
@@ -48,7 +47,7 @@ class UserServiceTest {
     @Test
     void should_find_user_by_id() {
         // Given
-        user = new User();
+        User user = new User();
         user.setId(1L);
         user.setEmail("john@gmail.com");
         user.setLastName("Doe");

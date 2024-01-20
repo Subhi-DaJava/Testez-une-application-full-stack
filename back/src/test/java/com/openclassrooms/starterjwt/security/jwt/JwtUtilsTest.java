@@ -140,7 +140,6 @@ class JwtUtilsTest {
 
         // Then
         assertThat(isValid).isTrue();
-
     }
 
     @Test
@@ -158,7 +157,6 @@ class JwtUtilsTest {
 
         // Then
         assertThat(isValidSignature).isFalse();
-
     }
 
     @Test
@@ -171,7 +169,6 @@ class JwtUtilsTest {
 
         // Then
         assertThat(isValidFormat).isFalse();
-
     }
 
     @Test
@@ -199,8 +196,6 @@ class JwtUtilsTest {
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + jwtExpirationMs))
                 .compact();
-
-        System.out.println(tokenWithUnsupportedJwt);
 
         // When
         boolean isValid = jwtUtils.validateJwtToken(tokenWithUnsupportedJwt);

@@ -24,7 +24,7 @@ describe('RegisterComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should register a user', () => {
+  it('should register an user', () => {
     const registerRequest: RegisterRequest = {
       email: 'test@test.com',
       firstName: 'test',
@@ -39,7 +39,7 @@ describe('RegisterComponent', () => {
     expect(mockRouter.navigate).toHaveBeenCalledWith(['/login']);
   });
 
-  it('should display error message with empty fields', () => {
+  it('should display an error message with empty fields', () => {
     const registerRequest: RegisterRequest = {
       email: '',
       firstName: '',
@@ -55,7 +55,7 @@ describe('RegisterComponent', () => {
     expect(component.onError).toBeTruthy();
   });
 
-  it('should show error message when the invalid fields', () => {
+  it('should show an error message when the invalid fields', () => {
     const registerRequest: RegisterRequest = {
       email: 'test@@test.com',
       firstName: 'fr',

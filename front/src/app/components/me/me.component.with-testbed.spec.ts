@@ -104,7 +104,7 @@ describe('MeComponent', () => {
       firstName: 'User',
       lastName: 'USER',
       email: '',
-      // admin: true
+      admin: false
     }
 
     mockUserService.getById.mockImplementation(() => of(user));

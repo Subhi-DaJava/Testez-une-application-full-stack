@@ -37,7 +37,7 @@ class TeacherControllerIT {
                 .username("yoga@studio.com").build();
 
         Authentication authentication = new UsernamePasswordAuthenticationToken(
-                userDetails, null, userDetails.getAuthorities());
+                userDetails, "Password", userDetails.getAuthorities());
 
         jwtToken = jwtUtils.generateJwtToken(authentication);
     }

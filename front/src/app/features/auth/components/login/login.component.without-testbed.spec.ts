@@ -27,7 +27,7 @@ describe('LoginComponent without TestBed', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should call sessionService.logIn given valid email and password', () => {
+  it('should call sessionService.logIn with valid email and password', () => {
     const loginRequest: LoginRequest = {
       email: 'test@test.com',
       password: '123456'

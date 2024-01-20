@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,7 +18,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
 
 @AutoConfigureMockMvc
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -30,13 +30,15 @@ class UserControllerIT {
 
     private String jwtToken;
 
+    private Authentication authentication;
+
     private static final String BASE_URL = "/api/user";
 
     @BeforeEach
     public void setUpEach() {
         UserDetails userDetails = UserDetailsImpl.builder()
                 .username("subhi@test.com").build();
-        Authentication authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+        authentication = new UsernamePasswordAuthenticationToken(userDetails, "Password", userDetails.getAuthorities());
 
         jwtToken = jwtUtils.generateJwtToken(authentication);
     }
@@ -45,7 +47,7 @@ class UserControllerIT {
     void should_Return_200_When_User_Find_By_Id_Is_Successful_JWT() throws Exception {
         UserDetails userDetails = UserDetailsImpl.builder()
                 .username("yoga@studio.com").build();
-        Authentication authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+        authentication = new UsernamePasswordAuthenticationToken(userDetails, "Password", userDetails.getAuthorities());
         jwtToken = jwtUtils.generateJwtToken(authentication);
 
         mockMvc.perform(get(BASE_URL + "/1")
@@ -105,7 +107,7 @@ class UserControllerIT {
     void should_Return_200_When_User_Delete_By_Id_Is_Successful() throws Exception {
         UserDetails userDetails = UserDetailsImpl.builder()
                 .username("test_delete@test.com").build();
-        Authentication authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+        authentication = new UsernamePasswordAuthenticationToken(userDetails, "Password", userDetails.getAuthorities());
 
         jwtToken = jwtUtils.generateJwtToken(authentication);
         mockMvc.perform(delete(BASE_URL + "/4")

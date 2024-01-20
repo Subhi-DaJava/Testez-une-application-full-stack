@@ -13,6 +13,7 @@ import org.springframework.http.MediaType;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.Date;
@@ -44,7 +45,7 @@ class SessionControllerIT {
         UserDetails adminUserDetails = UserDetailsImpl.builder()
                 .username("yoga@studio.com").build();
         Authentication adminAuthentication = new UsernamePasswordAuthenticationToken(
-                adminUserDetails, null, adminUserDetails.getAuthorities());
+                adminUserDetails, "Password", adminUserDetails.getAuthorities());
 
         adminJwtToken = jwtUtils.generateJwtToken(adminAuthentication);
 
@@ -52,7 +53,7 @@ class SessionControllerIT {
                 .username("subhi@test.com").build();
 
         Authentication userAuthentication = new UsernamePasswordAuthenticationToken(
-                userUserDetails, null, userUserDetails.getAuthorities());
+                userUserDetails, "Password", userUserDetails.getAuthorities());
 
         userJwtToken = jwtUtils.generateJwtToken(userAuthentication);
 
@@ -78,6 +79,21 @@ class SessionControllerIT {
 
         mockMvc.perform(get(BASE_URL + "/2")
                         .header("Authorization", "Bearer " + userJwtToken))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.id").exists())
+                .andExpect(jsonPath("$.name").exists())
+                .andExpect(jsonPath("$.description").exists())
+                .andExpect(jsonPath("$.date").exists())
+                .andExpect(jsonPath("$.users").exists())
+                .andExpect(jsonPath("$.createdAt").exists())
+                .andExpect(jsonPath("$.updatedAt").exists());
+    }
+
+    @WithMockUser
+    @Test
+    void should_Return_200_When_Session_Find_By_Id_Is_Successful_With_User_JWT_With_MockUser() throws Exception {
+
+        mockMvc.perform(get(BASE_URL + "/2"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id").exists())
                 .andExpect(jsonPath("$.name").exists())
@@ -172,23 +188,6 @@ class SessionControllerIT {
                         .content(objectMapper.writeValueAsString(sessionDto)))
                 .andExpect(status().isUnauthorized());
     }
-
-//    @Test
-//    void should_Return_401_When_Session_Create_Is_Unsuccessful_With_User_JWT() throws Exception {
-//
-//        SessionDto sessionDto = new SessionDto();
-//        sessionDto.setName("test");
-//        sessionDto.setDescription("test");
-//        sessionDto.setDate(new Date());
-//        sessionDto.setTeacher_id(1L);
-//
-//        mockMvc.perform(post(BASE_URL)
-//                        .header("Authorization", "Bearer " + userJwtToken)
-//                        .contentType(MediaType.APPLICATION_JSON)
-//                        .accept(MediaType.APPLICATION_JSON)
-//                        .content(objectMapper.writeValueAsString(sessionDto)))
-//                .andExpect(status().isUnauthorized());
-//    }
 
     @Test
     void should_Return_200_When_Session_Update_Is_Successful() throws Exception {

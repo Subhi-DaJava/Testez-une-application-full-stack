@@ -62,13 +62,12 @@ class UserControllerTest {
                 LocalDateTime.now(),
                 LocalDateTime.now());
         when(userService.findById(1L)).thenReturn(user);
-        when(userService.findById(1L)).thenReturn(user);
         when(userMapper.toDto(user)).thenReturn(userDto);
 
         //when
         ResponseEntity<?> response = userController.findById("1");
-        //then
 
+        //then
         assertThat(response.getStatusCodeValue()).isEqualTo(200);
         assertThat(response.getBody()).isEqualTo(userDto);
         verify(userService, times(1)).findById(1L);
@@ -82,6 +81,7 @@ class UserControllerTest {
        // when(userService.findById(1L)).thenReturn(null);
         //when
         ResponseEntity<?> response = userController.findById("1");
+
         //then
         assertThat(response.getStatusCodeValue()).isEqualTo(404);
         verify(userService, times(1)).findById(1L);
@@ -90,7 +90,7 @@ class UserControllerTest {
 
     @Test
     void should_throw_exception_when_userId_is_not_a_number() {
-        //given
+
         //when
         ResponseEntity<?> response = userController.findById("a");
         //then

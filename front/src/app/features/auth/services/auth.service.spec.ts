@@ -91,9 +91,6 @@ describe('AuthService', () => {
     expect(httpClientSpy.post).toHaveBeenCalledWith(`${url}/register`, registerRequest);
     expect(httpSpy).toHaveBeenCalledWith(`${url}/register`, registerRequest);
 
-
   });
-
-
 
 });

@@ -31,7 +31,6 @@ class TeacherControllerTest {
     private TeacherController teacherController;
 
     private Teacher teacherA;
-    private Teacher teacherB;
     private List<Teacher> teachers;
 
     @BeforeEach
@@ -43,7 +42,7 @@ class TeacherControllerTest {
                 .createdAt(LocalDateTime.now())
                 .updatedAt(LocalDateTime.now())
                 .build();
-        teacherB = Teacher.builder()
+        Teacher teacherB = Teacher.builder()
                 .id(2L)
                 .firstName("Jane")
                 .lastName("Harper")
@@ -79,7 +78,7 @@ class TeacherControllerTest {
     @Test
     void should_not_find_teacher_by_teacherId_teacher_not_existing() {
         // Given
-       // when(teacherService.findById(1L)).thenReturn(null);
+       // when(teacherService.findById(2L)).thenReturn(null);
 
         // When
         ResponseEntity<?> response = teacherController.findById("2");

@@ -68,13 +68,13 @@
 
 #### E2E Rapport de test 
 Lancement du test e2e (dans le répertoire front) :
-1. > npm run e2e
+*  npm run e2e
 
 Génération du rapport de couverture (vous devriez lancer le test e2e avant) :
-2.  > npm run e2e:coverage
+*  npm run e2e:coverage
 
 Le rapport est disponible ici :
-3. > front/coverage/lcov-report/index.html
+*  front/coverage/lcov-report/index.html
    
 ### Testing Backend
 1. Allez dans le dossier du backend : `cd back`. 

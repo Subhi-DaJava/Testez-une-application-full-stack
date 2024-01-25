@@ -2,7 +2,6 @@ import { expect } from '@jest/globals';
 import { UserService } from './user.service';
 import {first, of} from "rxjs";
 
-
 describe('UserService', () => {
   let service: UserService;
   let httpClientSpy: any; // mock of HttpClient

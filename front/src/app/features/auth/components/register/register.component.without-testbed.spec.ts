@@ -2,7 +2,6 @@ import { FormBuilder } from '@angular/forms';
 import { RegisterComponent } from './register.component';
 import { RegisterRequest } from '../../interfaces/registerRequest.interface';
 import { of, throwError } from 'rxjs';
-
 describe('RegisterComponent', () => {
   let component: RegisterComponent;
   let mockAuthService: any;
